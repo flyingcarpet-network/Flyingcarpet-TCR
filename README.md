@@ -1,4 +1,4 @@
-# Token-Curated Registry
+# Flyingcarpet-Token-Curated Registry
 
 [ ![Codeship Status for skmgoldin/tcr](https://app.codeship.com/projects/b140cce0-ac77-0135-0738-52e8b96e2dec/status?branch=master)](https://app.codeship.com/projects/257003)
 
