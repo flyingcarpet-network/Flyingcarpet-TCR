@@ -67,7 +67,7 @@ contract Registry {
             this,
             2528821098, // 2050, this should be controlled by governance mechanism...
             _data,
-            parameterizer.get("minDeposit"),
+            parameterizer.get("stakingPoolSize"),
             0x0, // Need to update
             true,
             address(token)
