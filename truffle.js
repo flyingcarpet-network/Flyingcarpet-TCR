@@ -21,10 +21,10 @@ module.exports = {
       gasPrice: 10000000000,
     },
     ganache: {
-      provider: () => new HDWalletProvider(mnemonic, 'http://localhost:8545'),
+      provider: () => new HDWalletProvider(mnemonic, 'http://localhost:7545'),
       network_id: '*',
-      gas: 6000000,
-      gasPrice: 25000000000,
+      gas: 6721975,
+      gasPrice: 2000000000,
     },
     rinkeby: {
       provider: () => new HDWalletProvider(mnemonic, 'https://rinkeby.infura.io'),

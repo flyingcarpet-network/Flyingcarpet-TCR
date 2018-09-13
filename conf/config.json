@@ -15,7 +15,7 @@
     "exitTimeDelay": 600,
     "exitPeriodLen": 600
 	},
-  "name": "The TestChain Registry",
+  "name": "Flyingcarpet Token-Curated Registry of Opportunities",
   "token": {
     "address": "0x337cDDa6D41A327c5ad456166CCB781a9722AFf9",
     "deployToken": true,
@@ -24,13 +24,13 @@
     "symbol": "TEST",
     "supply": "1000000000000000000000000000",
     "tokenHolders": [
-      { "address": "0x627306090abaB3A6e1400e9345bC60c78a8BEf57",
+      { "address": "0xCA08c331Aae01536A020441dc3930f84a4530b28",
         "amount": "250000000000000000000000000" },
-      { "address": "0xf17f52151EbEF6C7334FAD080c5704D77216b732",
+      { "address": "0xcBAAa5e9aF9dC3576809e06DC1743065d18F0291",
         "amount": "250000000000000000000000000" },
-      { "address": "0xC5fdf4076b8F3A5357c5E395ab970B5B54098Fef",
+      { "address": "0x004502a00c7993316e92A6276e6e1e01770AC71c",
         "amount": "250000000000000000000000000" },
-      { "address": "0x821aEa9a577a9b44299B9c15c88cf3087F3b5544",
+      { "address": "0x92E626aFC3869Ae3354fFa8c36fC00DcF7a7a11A",
         "amount": "250000000000000000000000000" }
     ]
   }
