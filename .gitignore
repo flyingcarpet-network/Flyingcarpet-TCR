@@ -8,3 +8,4 @@ conf/
 coverage/
 coverage.json
 notes.md
+.DS_Store

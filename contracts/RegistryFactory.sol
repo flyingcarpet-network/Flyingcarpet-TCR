@@ -3,12 +3,11 @@ pragma solidity ^0.4.20;
 import "tokens/eip20/EIP20.sol";
 import "./ParameterizerFactory.sol";
 import "./Registry.sol";
-import "plcr-revival/PLCRVoting.sol";
 import "./Parameterizer.sol";
 
 contract RegistryFactory {
 
-    event NewRegistry(address creator, EIP20 token, PLCRVoting plcr, Parameterizer parameterizer, Registry registry);
+    event NewRegistry(address creator, EIP20 token, Parameterizer parameterizer, Registry registry);
 
     ParameterizerFactory public parameterizerFactory;
     ProxyFactory public proxyFactory;
@@ -32,12 +31,11 @@ contract RegistryFactory {
         string _name
     ) public returns (Registry) {
         Parameterizer parameterizer = parameterizerFactory.newParameterizerBYOToken(_token, _parameters);
-        PLCRVoting plcr = parameterizer.voting();
 
         Registry registry = Registry(proxyFactory.createProxy(canonizedRegistry, ""));
-        registry.init(_token, plcr, parameterizer, _name);
+        registry.init(_token, parameterizer, _name);
 
-        emit NewRegistry(msg.sender, _token, plcr, parameterizer, registry);
+        emit NewRegistry(msg.sender, _token, parameterizer, registry);
         return registry;
     }
 
@@ -62,13 +60,12 @@ contract RegistryFactory {
         Parameterizer parameterizer = parameterizerFactory.newParameterizerWithToken(_supply, _tokenName, _decimals, _symbol, _parameters);
         EIP20 token = EIP20(parameterizer.token());
         token.transfer(msg.sender, _supply);
-        PLCRVoting plcr = parameterizer.voting();
 
         // Create & initialize a new Registry contract
         Registry registry = Registry(proxyFactory.createProxy(canonizedRegistry, ""));
-        registry.init(token, plcr, parameterizer, _registryName);
+        registry.init(token, parameterizer, _registryName);
 
-        emit NewRegistry(msg.sender, token, plcr, parameterizer, registry);
+        emit NewRegistry(msg.sender, token, parameterizer, registry);
         return registry;
     }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "sol-tcr",
+  "name": "tcro",
   "version": "0.0.1",
-  "description": "A generic, string-keyed TCR in Solidity",
+  "description": "Flyingcarpet - Token-Curated Registry of Opportunities",
   "scripts": {
     "install": "truffle install",
     "compile": "truffle compile",
