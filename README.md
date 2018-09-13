@@ -58,7 +58,7 @@ npm run deploy-ganache
 
 Next, you'll need to call the deployed factory contracts:
 ```
-npm run deploy-proxies:rinkeby
+npm run deploy-proxies:ganache
 ```
 
 The `Parameterizer`, `Registry` and `Token` contracts are now deployed locally.
