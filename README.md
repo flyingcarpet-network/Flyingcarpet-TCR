@@ -87,6 +87,66 @@ Fulfillments may then be submitted using the `StandardBounties`'s `fulfillBounty
 
 When the Registry is deployed a ERC-20 token is also deployed (as defined in the [`conf/config.json`](conf/config.json) file). Obviously, before token can be sent to a bounty using the `StandardBounties`'s `contribute()` function, the token contracts's `approve()` function must be called in order to give the bounties contract access to the desired amount of token to stake.
 
+## Registry Contract Functions
+
+### Submit()
+
+The submit function takes a JSON string as its only argument. This string must obey the following format (derived from the [`StandardBounties` bounty `data` issuance schema](https://github.com/Bounties-Network/StandardBounties/blob/master/docs/standardSchemas.md#standardbounties-data-schemas)):
+
+```
+{
+  payload: {
+    title: // A string representing the title of the bounty
+    description: // A string representing the description of the bounty, including all requirements
+    issuer: [
+      // Persona for the issuer of the bounty
+      // See: bounty persona schema here: https://github.com/Bounties-Network/StandardBounties/blob/master/docs/standardSchemas.md#version-01
+    ],
+    funders: [
+      // Array of personas of those who funded the issue.
+      // See: bounty persona schema here: https://github.com/Bounties-Network/StandardBounties/blob/master/docs/standardSchemas.md#version-01
+    ],
+    categories: // An array of strings, representing the categories of tasks which are being requested
+    created: // The timestamp in seconds when the bounty was created
+    tokenSymbol: // the symbol for the token which the bounty pays out (NTN)
+    tokenAddress: // the address for the NTN token which the bounty pays out
+    // ------- Flyingcarpet Specific Options Below -------
+    geohash: // A string of the geohash of the location of the opportunity
+    useType: // A string representing the type of the data being collected, one of: rooftop, forest, land
+    collectionType: // A string representing the type of data collection required, one of: drone, satellite
+    radiusOfCollection: // The radius, in meters, of the required data collection area
+    resolution: // A string representing the required resolution of the data collection (for both drone and satellite data collection)
+    fileFormat: // A string representing the required type of output file format (for both drone and satellite data collection)
+    droneType: // (drone only) A string representing the required type of drone for the data collection (e.g. "thermal")
+  }
+}
+```
+
+Example of `data` for issuance of satellite land bounty:
+
+```
+{
+  "payload": {
+    "title": "Satellite Land Data Collection @ 40.7079934, -74.0110538",
+    "description": "This is a request for aerial land data collection using a satellite. ...",
+    "issuer": [
+      {"address": "0x667880b4c9378ec4963c046a7e6c582e295ab86c"}
+    ],
+    "funders":[],
+    "categories": ["Data Collection", "Satellite", "Land"],
+    "created": 1536957876,
+    "tokenSymbol": "NTN",
+    "tokenAddress": "0xd298284b06ab7e873c5406823609c179ed5d2cf4",
+    "geohash": "dr5refdv1",
+    "useType": "rooftop",
+    "collectionType": "satellite",
+    "radiusOfCollection": 100,
+    "resolution": "0.41 meters",
+    fileFormat: "JPEG"
+  }
+}
+```
+
 ## Governance
 
 Governance of the TCR is handled by the `Parameterizer` contract. This contract enables token holders to vote on changes to the Registry parameters (currently only the `stakingPoolSize` parameter) as well as the parameters of the `Parameterizer` contract itself (that defines how the governance mechanism works). Currently, there is no UI implemented to interact with these `Parameterizer` methods; however, a governance dialog will be implemented in the web app in the near future.
