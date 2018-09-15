@@ -108,8 +108,23 @@ contract Registry {
     @dev                Returns the balance of the bounty associated with a specific listing number
     @param _listingId The number of the listing who's balance to return
     */
-    function getListingBalance(uint _listingId) view public returns (uint added) {
+    function getBountyBalance(uint _listingId) view public returns (uint bal) {
         (,,,,,uint balance) = standardBounties.getBounty(listings[_listingId].bountyId);
         return balance;
+    }
+
+    /**
+    @dev                Returns the data of the bounty associated with a specific listing number
+    @param _listingId The number of the listing who's data to return
+    */
+    function getBountyData(uint _listingId) view public returns (string data) {
+        return standardBounties.getBountyData(listings[_listingId].bountyId);
+    }
+
+    /**
+    @dev                Returns the total number of items in the listing array
+    */
+    function getNumBounties() view public returns (uint numListing) {
+        return listings.length;
     }
 }

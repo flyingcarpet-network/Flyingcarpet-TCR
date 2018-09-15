@@ -1,7 +1,7 @@
 {
   "paramDefaults": {
     "stakingPoolSize": 10,
-    "pMinDeposit": 100000000000000000000,
+    "pMinDeposit": 100000,
     "pApplyStageLength": 1200,
     "pCommitStageLength": 1200,
     "pRevealStageLength": 1200,
@@ -10,11 +10,10 @@
 	},
   "name": "Flyingcarpet Token-Curated Registry of Opportunities",
   "token": {
-    "address": "0x337cDDa6D41A327c5ad456166CCB781a9722AFf9",
     "deployToken": true,
     "decimals": "18",
-    "name": "TestCoin",
-    "symbol": "TEST",
+    "name": "Nitrogen",
+    "symbol": "NTN",
     "supply": "1000000000000000000000000000",
     "tokenHolders": [
       { "address": "0xCA08c331Aae01536A020441dc3930f84a4530b28",
@@ -28,4 +27,3 @@
     ]
   }
 }
-
