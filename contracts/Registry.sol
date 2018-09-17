@@ -105,6 +105,14 @@ contract Registry {
     // --------
 
     /**
+    @dev                Returns the bounty ID associated with a specific listing number
+    @param _listingId The number of the listing who's bounty ID to return
+    */
+    function getBountyID(uint _listingId) view public returns (uint id) {
+        return listings[_listingId].bountyId;
+    }
+
+    /**
     @dev                Returns the balance of the bounty associated with a specific listing number
     @param _listingId The number of the listing who's balance to return
     */
