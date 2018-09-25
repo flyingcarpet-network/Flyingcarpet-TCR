@@ -45,7 +45,7 @@ contract Registry {
         parameterizer = Parameterizer(_parameterizer);
         name = _name;
 
-        standardBountiesAddress = 0xE6cEb9313F5d21Da736f797bc7ded826307b55A8;
+        standardBountiesAddress = 0xDC1F54d68EC83CE1075b3f528a1B937463B1Cb34;
         standardBounties = StandardBountiesInterface(standardBountiesAddress);
     }
 
@@ -87,7 +87,7 @@ contract Registry {
     @param _fulfillmentId Id of the fulfillment to assess
     */
 
-    function assessFulfillment(uint _bountyId, uint _fulfillmentId) external {
+    // function assessFulfillment(uint _bountyId, uint _fulfillmentId) external {
 
         // TODO: Implement PLCRVoting for bounty stakeholders to vote on fulfillment acceptance...
 
@@ -98,7 +98,7 @@ contract Registry {
         // );
 
         // emit _ListingFulfilled(_bountyId, _fulfillmentId);
-    }
+    // }
 
     // --------
     // GETTERS:
