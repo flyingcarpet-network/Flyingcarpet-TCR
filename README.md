@@ -111,7 +111,7 @@ The submit function takes a JSON string as its only argument. This string must o
     tokenSymbol: // the symbol for the token which the bounty pays out (NTN)
     tokenAddress: // the address for the NTN token which the bounty pays out
     // ------- Flyingcarpet Specific Options Below -------
-    geohash: // A string of the geohash of the location of the opportunity
+    geohashes: // An array of geohash strings representing the points making up a polygon covering the location of the opportunity
     useType: // A string representing the type of the data being collected, one of: rooftop, forest, land
     collectionType: // A string representing the type of data collection required, one of: drone, satellite
     radiusOfCollection: // The radius, in meters, of the required data collection area
@@ -137,7 +137,7 @@ Example of `data` for issuance of satellite land bounty:
     "created": 1536957876,
     "tokenSymbol": "NTN",
     "tokenAddress": "0xd298284b06ab7e873c5406823609c179ed5d2cf4",
-    "geohash": "dr5refdv1",
+    "geohashes": ["gcpvh9p6jp9p", "gcpvh733jjc5", "gcpvjgdcvh95"],
     "useType": "rooftop",
     "collectionType": "satellite",
     "radiusOfCollection": 100,

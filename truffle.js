@@ -27,10 +27,10 @@ module.exports = {
       gasPrice: 2000000000,
     },
     rinkeby: {
-      provider: () => new HDWalletProvider(mnemonic, 'https://rinkeby.infura.io'),
+      provider: () => new HDWalletProvider(mnemonic, 'https://rinkeby.infura.io/'),
       network_id: '*',
-      gas: 4500000,
-      gasPrice: 25000000000,
+      // gas: 4000000,
+      // gasPrice: 30000000000,
     },
     ropsten: {
       provider: () => new HDWalletProvider(mnemonic, 'https://ropsten.infura.io'),

@@ -2,6 +2,7 @@
 const fs = require('fs');
 
 const RegistryFactory = artifacts.require('RegistryFactory.sol');
+const MintableToken = artifacts.require('MintableToken.sol');
 
 const config = JSON.parse(fs.readFileSync('../conf/config.json'));
 const paramConfig = config.paramDefaults;
@@ -9,26 +10,28 @@ const paramConfig = config.paramDefaults;
 module.exports = (done) => {
   async function deployProxies(networkID) {
     let registryFactoryAddress;
+    let mintableTokenAddress;
     if (networkID === '1') {
       registryFactoryAddress = '0xcc0df91b86795f21c3d43dbeb3ede0dfcf8dccaf'; // mainnet
+      mintableTokenAddress = ''; // mainnet
     } else if (networkID === '4') {
-      registryFactoryAddress = '0x822415a1e4d0d7f99425d794a817d9b823bdcd0c'; // rinkeby
+      registryFactoryAddress = '0xbeb46fef1ce8587f4fcfce5b28708e679d0e0de6'; // rinkeby
+      mintableTokenAddress = ''; // rinkeby
     } else {
       registryFactoryAddress = RegistryFactory.address; // development
+      mintableTokenAddress = MintableToken.address; // development
     }
 
     /* eslint-disable no-console */
     console.log(`RegistryFactory:   ${registryFactoryAddress}`);
+    console.log(`MintableToken:   ${mintableTokenAddress}`);
     console.log('');
     console.log('Deploying proxy contracts...');
     /* eslint-enable no-console */
 
     const registryFactory = await RegistryFactory.at(registryFactoryAddress);
-    const registryReceipt = await registryFactory.newRegistryWithToken(
-      config.token.supply,
-      config.token.name,
-      config.token.decimals,
-      config.token.symbol,
+    const registryReceipt = await registryFactory.newRegistryBYOToken(
+      mintableTokenAddress,
       [
         paramConfig.stakingPoolSize,
         paramConfig.pMinDeposit,
