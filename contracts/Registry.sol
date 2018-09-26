@@ -45,7 +45,7 @@ contract Registry {
         parameterizer = Parameterizer(_parameterizer);
         name = _name;
 
-        standardBountiesAddress = 0xDC1F54d68EC83CE1075b3f528a1B937463B1Cb34;
+        standardBountiesAddress = 0xd35f176624507fD7874F2B11b920193E5f9e2939;
         standardBounties = StandardBountiesInterface(standardBountiesAddress);
     }
 
