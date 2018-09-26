@@ -15,8 +15,8 @@ module.exports = (done) => {
       registryFactoryAddress = '0xcc0df91b86795f21c3d43dbeb3ede0dfcf8dccaf'; // mainnet
       mintableTokenAddress = ''; // mainnet
     } else if (networkID === '4') {
-      registryFactoryAddress = '0xbeb46fef1ce8587f4fcfce5b28708e679d0e0de6'; // rinkeby
-      mintableTokenAddress = ''; // rinkeby
+      registryFactoryAddress = '0x4d48d1b5e5f02dc944b225c7d8a567509eb66ddd'; // rinkeby
+      mintableTokenAddress = '0xd27a60f75d5e59a6f8c8fda7346673b6abe93ad1'; // rinkeby
     } else {
       registryFactoryAddress = RegistryFactory.address; // development
       mintableTokenAddress = MintableToken.address; // development

@@ -14,8 +14,10 @@ contract MintableToken is StandardToken, Ownable {
   event Mint(address indexed to, uint256 amount);
   event MintFinished();
 
+  string public constant name = "Nitrogen";
+  string public constant symbol = "NTN";
+  uint8 public constant decimals = 18;
   bool public mintingFinished = false;
-
 
   modifier canMint() {
     require(!mintingFinished);
