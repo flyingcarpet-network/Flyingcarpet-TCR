@@ -3,6 +3,7 @@ const fs = require('fs');
 
 const RegistryFactory = artifacts.require('RegistryFactory.sol');
 const MintableToken = artifacts.require('MintableToken.sol');
+const StandardBountiesFactory = artifacts.require('StandardBountiesFactory.sol');
 
 const config = JSON.parse(fs.readFileSync('../conf/config.json'));
 const paramConfig = config.paramDefaults;
@@ -11,15 +12,19 @@ module.exports = (done) => {
   async function deployProxies(networkID) {
     let registryFactoryAddress;
     let mintableTokenAddress;
+    let standardBountiesFactoryAddress;
     if (networkID === '1') {
       registryFactoryAddress = '0xcc0df91b86795f21c3d43dbeb3ede0dfcf8dccaf'; // mainnet
       mintableTokenAddress = ''; // mainnet
+      standardBountiesFactoryAddress = ''; // mainnet
     } else if (networkID === '4') {
       registryFactoryAddress = '0x4d48d1b5e5f02dc944b225c7d8a567509eb66ddd'; // rinkeby
       mintableTokenAddress = '0xd27a60f75d5e59a6f8c8fda7346673b6abe93ad1'; // rinkeby
+      standardBountiesFactoryAddress = ''; // rinkeby
     } else {
       registryFactoryAddress = RegistryFactory.address; // development
       mintableTokenAddress = MintableToken.address; // development
+      standardBountiesFactoryAddress = StandardBountiesFactory.address; // development
     }
 
     /* eslint-disable no-console */
@@ -51,6 +56,16 @@ module.exports = (done) => {
       registry,
     } = registryReceipt.logs[0].args;
 
+    // Create standardBounties from standardBountiesFactory (using registry address as owner address)
+    const standardBountiesFactory = await StandardBountiesFactory.at(standardBountiesFactoryAddress);
+    const standardBountiesReceipt = await standardBountiesFactory.newStandardBountiesWithOwner(
+      registry // Pass registry address as owner of standardBounties contract
+    );
+
+    const {
+      standardBounties
+    } = standardBountiesReceipt.logs[0].args;
+
     /* eslint-disable no-console */
     console.log('');
     console.log(`Proxy contracts successfully migrated to network_id: ${networkID}`);
@@ -59,6 +74,7 @@ module.exports = (done) => {
     console.log(`PLCRVoting:        ${plcr}`);
     console.log(`Parameterizer:     ${parameterizer}`);
     console.log(`Registry:          ${registry}`);
+    console.log(`StandardBounties:  ${standardBounties}`);
     console.log('');
     /* eslint-enable no-console */
 

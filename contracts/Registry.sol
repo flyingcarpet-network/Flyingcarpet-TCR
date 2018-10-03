@@ -3,7 +3,7 @@ pragma solidity ^0.4.11;
 import "tokens/eip20/EIP20Interface.sol";
 import "./Parameterizer.sol";
 import "zeppelin/math/SafeMath.sol";
-import "./StandardBountiesInterface.sol";
+import "StandardBounties/contracts/StandardBounties.sol";
 
 contract Registry {
 
@@ -31,7 +31,7 @@ contract Registry {
 
     // Bounties Variables
     address public standardBountiesAddress;
-    StandardBountiesInterface standardBounties;
+    StandardBounties standardBounties;
 
     /**
     @dev Initializer. Can only be called once.
@@ -46,7 +46,7 @@ contract Registry {
         name = _name;
 
         standardBountiesAddress = 0xd35f176624507fD7874F2B11b920193E5f9e2939;
-        standardBounties = StandardBountiesInterface(standardBountiesAddress);
+        standardBounties = StandardBounties(standardBountiesAddress);
     }
 
     // --------------------
